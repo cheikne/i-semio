@@ -1,0 +1,33 @@
+{
+    "id":"ValueID",
+    "libele":"Lbelle de la  reference",
+    "numeroVersion": "numeroVersion",
+	"referenceRNCP": "NoReference",
+	"dateCreation": "Date",
+	"createur": "NomUser",
+	"dateDerniereModification": "DateModif",
+	"userDerniereModification": "NomUserModificateur",
+	"competences": [
+        {
+            "id": "ValueID",
+            "libelle": "Semiologie Generale",
+            "lieu": "Lieu auquel l'etudiant a effectué son stage",
+            "dateEvaluation": "Date a laquelle l'etudiant a effectué la competence : DateTimeType()",
+            "docdeposeParEnsignant":"Document deposé par ensignant : url file",
+            "sousCompetences":[
+                {
+                    "id":"idSousCompetences",
+                    "libele":"libelle sous competence",
+                    "items":{
+                        "appris":"boolean",
+                        "vu_faire":"boolean",
+                        "fait":"boolean",
+                        "acquis":"boolean",
+                        "remarque":"texte Remarque",
+                        "difficulte":"texte Difficulte"
+                    }
+                }
+            ]
+        }
+    ]
+}

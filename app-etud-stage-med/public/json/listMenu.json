@@ -1,0 +1,18 @@
+{
+    "list_menu":{
+
+        "home":"Accueil",
+        "semio_generale":"Semiologie generale", 
+        "semio_cardio_vasculaire":"Semiologie Cardiovasculaire",
+        "semio_respiratoire":"Semiologie Rèspiratoire",
+        "semio_appareil_digestif":"Semiologie de l\"appareil digestif",
+        "semio_neurologique":"Semiologie Neurologique",
+        "semio_osteo_articulaire_musculaire":"Semiologie Osteo-Articulaire et Musculaire",
+        "semio_endocrinologique":"Semiologie Endocrinologique",
+        "semio_dermatologique":"Semiologie Dermatologique",
+        "semio_ophtalmologie":"Semiologie Ophtalmologie",
+        "semio_orl":"Semiologie ORL",
+        "semio_hematologique":"Semiologie Hematologique",
+        "semio_appareil_urinaire":" Semiologie de l\"Appareil Unaire"
+    }
+}

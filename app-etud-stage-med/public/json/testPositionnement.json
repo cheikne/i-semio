@@ -1,0 +1,22 @@
+{
+    "initiale":{
+        "ei1":"Vos connaissances en sémiologie ?",
+        "ei2":"Votre capacité à interroger un malade ?",
+        "ei3":"Votre capacité à réaliser un examen physique ?",
+        "ei4":"Votre aisance face à un patient ?",
+        "ei5":"votre niveau d’anxiété vis-à-vis de ces stages hospitaliers ?"
+    },
+    "finale":{
+        "ef1":"Comment évaluez vous actuellement vos connaissances en sémiologie ?",
+        "ef2":"Ce carnet vous a-t-il aidé à améliorer vos connaissances en sémiologie ?",
+        "ef3":"Comment évaluez vous actuellement votre capacité à interroger un malade ?",
+        "ef4":"Ce carnet vous a-t-il aidé à améliorer votre capacité à interroger un malade ?",
+        "ef5":"Comment évaluez vous actuellement votre capacité à réaliser un examen physique ?",
+        "ef6":"Ce carnet vous a-t-il aidé à améliorer votre capacité à réaliser un examen physique ?",
+        "ef7":"Comment évaluez vous actuellement votre aisance face à un patient ?",
+        "ef8":"Comment évaluez vous actuellement votre aisance face à un patient ?",
+        "ef9":"Ce carnet vous a-t-il aider à diminuer l’anxiété face aux stages hospitaliers ?",
+        "ef10":"Quel a été votre taux d’assiduité en stage ?",
+        "ef11":"Ce carnet vous a-t-il aidé à être plus assidu ?"
+    }
+}

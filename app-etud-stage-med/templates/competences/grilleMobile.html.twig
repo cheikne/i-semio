@@ -1,0 +1,123 @@
+{% set num_ligne = 1 %}
+{% for key , value in sous_competences %}
+    <span>{{key == 'total'?'':num_ligne~'.'}}   {{value}}</span>
+
+    {% set num_ligne = num_ligne + 1 %}
+    <div class ="card mb-5">
+        
+        <div class="card-body">
+            {% if key == 'total' %}
+                <div class="row">
+                    <div class = "col-3">
+                        <label class="form-check-label" for="check1">Appris</label>
+                        <p id = "totalApprisSemioG" class="text-info fs-7">0</p>
+                    </div>
+                    <div class = "col-3">
+                        <label class="form-check-label" for="check1">Vu_faire</label>
+                        <p  id = "totalVuFaireSemioG" class="text-info fs-7">0</p>
+                    </div>
+                    <div class = "col-2">
+                        <label class="form-check-label" for="check1">Fait</label>
+                        <p id = "totalFaitSemioG" class="text-info fs-7">0</p>
+                    </div>
+                    <div class = "col-3">
+                        <label class="form-check-label" for="check1">Acquis</label>
+                        <p id = "totalAcquisSemioG" class="text-info fs-7">0</p>
+                    </div>
+                </div>
+            {% else %}
+                
+                <div class="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Appris</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="appris{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalApprisSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm">
+                            
+                                <select class="form-select" aria-label="Sélectionnez une option">
+                                    <option value="0" selected>Lieu</option>
+                                    {% for key_service, value_service  in services %}
+                                        <option value="{{key_service}}">{{value_service}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class ="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Vu faire</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="vuFaire{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalVuFaireSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm"> 
+                            <select class="form-select" aria-label="Sélectionnez une option">
+                                <option value="0">Lieu</option>
+                                    {% for key_service, value_service  in services %}
+                                        <option value="{{key_service}}">{{value_service}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class ="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Fait</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="fait{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalFaitSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm">
+                            
+                            <select class="form-select" aria-label="Sélectionnez une option">
+                                <option value="0">Lieu</option>
+                                {% for key_service, value_service  in services %}
+                                    <option value="{{key_service}}">{{value_service}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class ="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Acquis</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="acquis{{key}}"  onclick = "calculTotalItemsClicked(this.id,'totalAcquisSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm">
+                            
+                            <select class="form-select" aria-label="Sélectionnez une option">
+                                <option value="0">Lieu</option>
+                                {% for key_service, value_service  in services %}
+                                    <option value="{{key_service}}">{{value_service}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col ms-2">
+                        <h6>Remarques</h6>
+                        <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Rq{{key}}"><i class="bi bi-pencil-square"></i></span>
+                    </div>
+                    <div class = "col">
+                        <h6>difficultés</h6>
+                        <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Diff{{key}}"><i class="bi bi-pencil-square"></i></span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+     
+{% endfor %}
+</div>
