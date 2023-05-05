@@ -1,0 +1,570 @@
+
+  <link rel="stylesheet" href="https://cdn.uca.fr/v2/css/uca.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="../css/main.css" rel="stylesheet">
+   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+{# {% extends '/pages/base.html.twig' %}
+
+{% block title %}{{libelleCompetence}}{% endblock %}
+{% block header %}{% endblock %}
+{% block site_body %}
+    <div class="home-banner margin-bottom-0" style="margin-top:80px;" data-overlay="5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="banner_caption text-center mb-5">
+                        <h1 class="banner_title ft-bold mb-1"><span class="count">72412</span> Interface enseignant</h1>
+                        <p class="fs-md ft-medium">Faire des filtrages par promo</p>
+                    </div>
+
+                    <form class="bg-white rounded p-1">
+                        <div class="row no-gutters">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                                <div class="form-group mb-0 position-relative">
+                                    <input type="text" class="form-control lg left-ico" placeholder="Nom de l'etudiant">
+                                    <i class="bnc-ico lni lni-search-alt"></i>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group mb-0 position-relative">
+                                    <input type="date" class="form-control lg left-ico" placeholder="Date de naisssance">
+                                    <i class="bnc-ico lni lni-target"></i>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group mb-0 position-relative">
+                                    <select class="form-select custom-select lg b-0">
+                                        <option value="1">Choisir la promo</option>
+                                        <option value="2">Information Technology</option>
+                                        <option value="3">Cloud Computing</option>
+                                        <option value="4">Engineering Services</option>
+                                        <option value="5">Healthcare/Pharma</option>
+                                        <option value="6">Telecom/ Internet</option>
+                                        <option value="7">Finance/Insurance</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+                                <div class="form-group mb-0 position-relative bg-info">
+                                    <button class="btn full-width custom-height-lg theme-bg fs-md" type="button">Chercher</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container mt-5">
+  
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Date de naissance</th>
+         <th>Resultats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td><a href="#">exporter</a></td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td><a href="#">exporter</a></td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td><a href="#">exporter</a></td>
+      </tr>
+      <td>Mary</td>
+        <td>Moe</td>
+        <td>john@example.com</td>
+        <td><a href="#">exporter</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %} #}
+<nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0" id = "nav_bar">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-0" href="/home"><span class="mx-5" id="ufr_medecine_text"> E - SEMIO</span>
+        <img src="{{asset('https://cdn.uca.fr/images/logos/logo_uca_mini_light.png')}}" alt="Avatar Logo" style="width:80px;" class="rounded-pill" id ="logo_uca"> 
+    </a>
+    <a class="badge rounded-pill bg-light d-md-none float-end nav-link text-truncate" href="#" style="margin-left:100px;font-size:10px;color:black">Déconnexion</a>
+    <button class="btn btn-primary d-md-none float-end ms-0 p-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" style="font-size:25px;">
+        <span class="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></span>
+    </button>
+    
+  <div class="navbar-nav  d-none d-md-block">
+    <div class="nav-item text-nowrap d-flex">
+        <div style="width: 70px;">
+            <div class="search-container">
+                <form action="/search" method="get">
+                    <input class="form-control search expandleft" id="searchInput" type="search" name="searchInput" placeholder="Rechercher">
+                    <div>
+                        <label class="button searchbutton" for="searchInput">
+                            <div class="btn btn-outline-info btn-icon rounded-circle">
+                                <span class="mdi mdi-18px mdi-magnify"></span>
+                            </div>
+                        </label>
+                        <label class="button searchbuttonClose" for="nothing">
+                            <div class="btn btn-outline-info btn-icon rounded-circle">
+                                <span class="mdi mdi-18px mdi-close"></span>
+                            </div>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-icon me-3" title="{{app.user.username}}" data-bs-toggle="tooltip" data-bs-placement="bottom"><span class="mdi mdi-account mdi-24px px-3"></span></button>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <br><br><br>
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-info text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Admin : {{app.user.username}}</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li>
+                        <a href="/enseignant/dashboard" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                    </li>
+                    <li>
+                        <a href="/enseignant/referentiel" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Referentiel</span></a>
+                    </li>
+                    <li>
+                        <a href="/ensignant/promo" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Promotions</span> </a>
+                    </li>
+                    <li>
+                        <a href="/enseignant/export" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Exporter des données</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-info text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">{{app.user.username}}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3" style ="margin-top : 80px;">
+          {# <div class="container"> #}
+                        
+{# ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc #}
+
+          <!-- Begin Page Content -->
+                {# <div class="container-fluid"> #}
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                                <div class="form-group mb-0 position-relative">
+                                    <select class="form-select custom-select lg b-0">
+                                        <option value="1">Choisir la promo</option>
+                                        <option value="2">Information Technology</option>
+                                        <option value="3">Cloud Computing</option>
+                                        <option value="4">Engineering Services</option>
+                                        <option value="5">Healthcare/Pharma</option>
+                                        <option value="6">Telecom/ Internet</option>
+                                        <option value="7">Finance/Insurance</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                               Appris</div>
+                                            {# <div class="h5 mb-0 font-weight-bold text-gray-800">26 %</div> #}
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Vu faire</div>
+                                            {# <div class="h5 mb-0 font-weight-bold text-gray-800">30%</div> #}
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Fait
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Acquis</div>
+                                            {# <div class="h5 mb-0 font-weight-bold text-gray-800">18</div> #}
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar"
+                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Utilisation du site</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Autres choses</h6>
+                                    <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-primary"></i> Direct
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Social
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-info"></i> Referral
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Content Column -->
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Autres choses</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small font-weight-bold">Quelque chose <span
+                                            class="float-right">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Quelque chose <span
+                                            class="float-right">40%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Quelque chose <span
+                                            class="float-right">60%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Quelque chose <span
+                                            class="float-right">80%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Quelque chose <span
+                                            class="float-right">Complete!</span></h4>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Color System -->
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            Primary
+                                            <div class="text-white-50 small">#4e73df</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-success text-white shadow">
+                                        <div class="card-body">
+                                            Success
+                                            <div class="text-white-50 small">#1cc88a</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-info text-white shadow">
+                                        <div class="card-body">
+                                            Info
+                                            <div class="text-white-50 small">#36b9cc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-warning text-white shadow">
+                                        <div class="card-body">
+                                            Warning
+                                            <div class="text-white-50 small">#f6c23e</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-danger text-white shadow">
+                                        <div class="card-body">
+                                            Danger
+                                            <div class="text-white-50 small">#e74a3b</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-secondary text-white shadow">
+                                        <div class="card-body">
+                                            Secondary
+                                            <div class="text-white-50 small">#858796</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-light text-black shadow">
+                                        <div class="card-body">
+                                            Light
+                                            <div class="text-black-50 small">#f8f9fc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card bg-dark text-white shadow">
+                                        <div class="card-body">
+                                            Dark
+                                            <div class="text-white-50 small">#5a5c69</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="img/undraw_posting_photo.svg" alt="...">
+                                    </div>
+                                    <p>Add some quality, svg illustrations to your project courtesy of <a
+                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                                        constantly updated collection of beautiful svg images that you can use
+                                        completely free and without attribution!</p>
+                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
+                                        unDraw &rarr;</a>
+                                </div>
+                            </div>
+
+                            <!-- Approach -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Commentaire sur le visuel</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                                        CSS bloat and poor page performance. Custom CSS classes are used to create
+                                        custom components and custom utility classes.</p>
+                                    <p class="mb-0">Before working with this theme, you should become familiar with the
+                                        Bootstrap framework, especially the utility classes.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                {# </div> #}
+                <!-- /.container-fluid -->
+
+
+
+    {# ccccccccccccccccccccccccccccccccc #}
+          {# </div> #}
+        </div>
+    </div>
+</div>
+   <script src="https://cdn.uca.fr/v2/js/uca.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

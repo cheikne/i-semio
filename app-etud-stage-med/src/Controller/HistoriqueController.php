@@ -15,7 +15,8 @@ class HistoriqueController extends AbstractController
         $content = json_decode($json,true);
         return $this->render('pages/historique.html.twig', [
             'libelleCompetence' => 'Historique des reponses',
-            'competences' => $content['competences']
+            'competences' => $content['competences'],
+            'status_' => 'etudiant'
         ]);
     }
 }

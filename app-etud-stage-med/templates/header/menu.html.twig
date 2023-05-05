@@ -3,33 +3,90 @@
                         'semio_endocrinologique':'Semiologie Endocrinologique','semio_dermatologique':'Semiologie Dermatologique','semio_ophtalmologie':'Semiologie Ophtalmologie',
                         'semio_orl':'Semiologie ORL','semio_hematologique':'Semiologie Hematologique','semio_appareil_urinaire':' Semiologie de l\'Appareil Unaire'} %}
 
-<nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0 ">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/home">UFR MEDECINE
-        <img src="{{asset('../assets/images/logo_uca_mini_light.png')}}" alt="Avatar Logo" style="width:80px;" class="rounded-pill ms-5"> 
+<nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap " id = "nav_bar">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-0" href="/home"><span class="mx-5" id="ufr_medecine_text"> E - SEMIO</span>
+        <img src="{{asset('https://cdn.uca.fr/images/logos/logo_uca_mini_light.png')}}" alt="Avatar Logo" style="width:80px;" id ="logo_uca"> 
     </a>
+    <form class="d-none d-md-inline-block form-inline navbar-search">
+        <div class="input-group">
+            <input type="text" class="rounded-pill border-info input-barre-recherche-nav-bar" id=""  placeholder="Tapez un texte  ....">
+            <div class="input-group-append">
+                <button class="btn btn-info ms-2 rounded-circle btn-barre-recherche-nav-bar" type="button">
+                        <span class="mdi mdi-18px mdi-magnify"></span>
+                </button>
+            </div>
+        </div>
+    </form>
+     {# <input type="text" > #}
+    <div class="row">
+        <div class="col-3 p-0">
+            <ul class="navbar-nav ml-auto">
 
-  <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="navbar-nav  d-none d-md-block">
-    <div class="nav-item text-nowrap d-flex">
-    <a class="navbar-brand  " href="{{path('app_historique')}}">Historique</a>
-      <button type="button" class="btn btn-primary btn-icon me-3" title="{{app.user.username}}" data-bs-toggle="tooltip" data-bs-placement="bottom"><span class="mdi mdi-account mdi-24px px-3"></span></button>
+                                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                                <li class="nav-item dropdown no-arrow d-sm-none" >
+                                    <a class="btn btn-primary dropdown-toggle text-light p-0" href="#" id="searchDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:0px;">
+                                        <span class="mdi mdi-18px mdi-magnify"></span>
+                                    </a>
+                                    <!-- Dropdown - Messages -->
+                                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                        <form class="form-inline mr-auto w-100 navbar-search">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control bg-light border-0 small"
+                                                    placeholder="Search for..." aria-label="Search"
+                                                    aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="button">
+                                                        <span class="mdi mdi-18px mdi-magnify"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+            </ul>
+        </div>
+        <div class="col-2 p-0">
+            {# <a class="badge rounded-pill bg-light d-md-none  nav-link text-truncate" href="#" style="font-size:10px;color:black">Déconnexion</a> #}
+            <button class="btn btn-primary btn-icon me-3 d-md-none" title="{{app.user.username}}" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="bi bi-escape"></i></button>
+        </div>
+        <div class="col">
+            <button class="btn btn-primary float-end d-md-none ms-0 p-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" style="font-size:25px;">
+                <span class="navbar-toggler-icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></span>
+            </button>
+        </div>
     </div>
-  </div>
+    <div class="nav-bar d-none d-md-block">
+        <div class="row">
+            <div class="col-lg-3 col-xl-3">
+                <a class="nav-link  text-light" href="/competences/avancer">
+                    avancés
+                </a>
+            </div>
+            <div class="col-lg-3 col-xl-3">
+                <a class="nav-link  text-light" href="{{path('app_historique')}}">
+                    historique
+                </a>
+            </div>
+            <div class="col-lg-6 col-xl-6 user-current">
+                <a class="nav-link me-5" href="#" aria-haspopup="true" aria-expanded="false">
+                    <span class="me-3 d-none d-lg-inline text-light small">{{app.user.username}}</span>
+                    <i class="bi bi-person-square"></i>
+                </a>
+            </div>
+        <div>
+    </div>
 </nav>
-
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 h-100 d-md-block collapse shadow  sidebar fixed-top mt-5" >
-    <div class="position-sticky pt-3">
+<nav id="sidebarMenu"  class="col-md-3 col-lg-2 h-100 d-md-block collapse shadow  sidebar fixed-top p-0" >
+    <br><br><br>
+    <div class="position-sticky w-100">
     <ul class="nav flex-column">
         {% for key , value in list_menu %}
             {% if key == 'home' %}
         
                 <li class="nav-item">
                     <a class="nav-link text-light"  href="/home" id = "{{ key }}">
-                        <span class="glyphicon glyphicon-home"></span>
-                        {{ value }}
+                        <i class="fs-5 bi-house"></i>  {{ value }}
                     </a>
                 </li>
             {% else %}
@@ -43,30 +100,70 @@
         {% endfor %}
     </ul>
 
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span class=" text-light">Consultez vos documents</span>
-        <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-        </a>
-    </h6>
+    <hr style="height:10px;border-width:0;color:gray;background-color:blue;border-style:dotted;margin-top:60px;">
     <ul class="nav flex-column mb-2">
         <li class="nav-item">
-            <a class="nav-link  text-light d-flex" href="#">
-                Document<span class="badge bg-info ">4</span>
+            <a class="nav-link text-truncate text-light" href="/competences/avancer">
+                Voir vos avancés
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  text-light" href="{{path('app_historique')}}">
-                <span data-feather="file-text"></span>
-                Historique
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link  text-light" href="#">
-                <span data-feather="file-text"></span>
-                paw paw
+            <a class="nav-link text-truncate text-light" href="{{path('app_historique')}}">
+                Voir l'historique
             </a>
         </li>
     </ul>
     </div>
 </nav>
+<div id="side_bar_mobile">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false" style="width:90%;">
+        <div class="offcanvas-header">
+            {# <h6 class="offcanvas-title d-sm-block" id="offcanvas">Menu</h6> #}
+            <div class="dropdown pb-4">
+                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle">
+                    <img src="https://github.com/mdo.png" alt="profil_etd" width="30" height="30" class="rounded-circle">
+                    <span class="d-sm-inline mx-1">{{app.user.username}}</span>
+                </a>
+            </div>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+         <div class="align-items-center ps-3">
+            <a class="d-sm-inline mx-1" href="#">Se déconnecter</a>
+        </div>
+        <hr style="height:3px;border-width:0;color:gray;background-color:blue">
+        <div class="offcanvas-body px-0">
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+
+                {% for key , value in list_menu %}
+                {% if key == 'home' %}
+            
+                    <li class="nav-item">
+                        <a class="nav-link text-truncate"  href="/home" id = "{{ key }}">
+                            <i class="fs-5 bi-house"></i><span class="ms-1 d-sm-inline">{{ value }}</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-truncate"  href="/competences/{{ key }}" id = "{{ key }}">
+                        <span class="ms-1 d-sm-inline">{{ value }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            <hr style="height:4px;border-width:0;color:gray;background-color:blue">
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="/competences/avancer">
+                        <span class="ms-1 d-sm-inline">Voir vos avancés</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="{{path('app_historique')}}">
+                        <span class="ms-1 d-sm-inline">Voir l'historique</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

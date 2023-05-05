@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\SemioHematologique;
+use App\Service\Ldap;
 use App\Service\RequestApiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,14 @@ class CompetencesController extends AbstractController
     #[Route('/competences/{id_competence}', name: 'app_competences')]
     public function index(Request $request ,  EntityManagerInterface $entityManager , $id_competence , RequestApiService $client): Response
     {
+        // $json =json_decode(file_get_contents('json/competencesSchema.json'),true);
+        // $res = $client->getCompetences('referentiel/8');
+        // $res = $client->createCompetences('referentiel/new',$json['test']);
+        // dd($res);
+        // $user = $this->getUser();
+        // $user_name = $user->getUsername();
+        // dd($ldap->getName($user_name));
+
         if($request->isMethod('POST')){
             // dd(json_decode($request->request->get('mydata')));
             $data = json_decode($request->request->get('mydata'));
@@ -34,6 +43,11 @@ class CompetencesController extends AbstractController
             $entityManager->flush();
             return new JsonResponse(['success' => true]);
         }
+        if ($id_competence == 'avancer') {
+            return $this->render('pages/progressCompetence.html.twig',[
+                'status_' => 'etudiant'
+            ]);
+        }
         $json = file_get_contents("json/competences.json");
         $content = json_decode($json,true);
         return $this->render('competences/index.html.twig', [
@@ -41,7 +55,8 @@ class CompetencesController extends AbstractController
             'libelleCompetence'=>$content['competences'][$id_competence],
             'sous_competences'=> $content[$id_competence],
             'items' => $content['items'],
-            'services' => $content['services']
+            'services' => $content['services'],
+            'status_' => 'etudiant'
         ]);
     }
 }

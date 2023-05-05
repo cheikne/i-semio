@@ -6,28 +6,46 @@
     <div class="link-page-retour">
         <p><a href="/home" >Accueil  ></a>{{libelleCompetence}}</p>
     </div>
-<div class="container header-body w-75">
-    <div class="container p-1  text-center mt-5 mb-5">
+<div class="container header-body">
+    <div class="container p-1  mt-5 mb-5">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h3>{{libelleCompetence}}</h3>
+            <div class="col col-md-12">
+                <h3 class="text-center">{{libelleCompetence}}</h3>
                 <p  class="lead">Révisez les concepts de base : Avant l'interrogation, assurez-vous de bien comprendre les concepts de base de la sémiologie respiratoire. Les termes tels que la respiration, la dyspnée, la toux, les sibilances, les râles, etc., sont des notions clés que vous devriez connaître et être en mesure d'expliquer.</p> 
             </div>
         </div>
     </div>
     <div id ="device_mobile" style ="display:none;">
+        <input type="text" id="input_bar_recherche_by_items" onkeyup="chercherByItemsMobile()" placeholder="Vous pouvez filtrer par rapport au champ objectifs ....">
         {% include "competences/grilleMobile.html.twig" with [
             {'sous_competences' : sous_competences,
              'services':services
             }]%}
     </div>
+
     <div class="table-responsive" id ="device_desktop" style ="display:none;">
-        <input type="text" id="input_bar_recherche_by_items" onkeyup="chercherByItems()" placeholder="Vous pouvez filtrer par rapport au champ objectifs ....">
+        <div class="d-sm-flex align-items-center justify-content-between mb-5">
+            <div class="col-xl-7 col-lg-7 col-md-3 col-sm-12 col-12">
+                <input type="text" id="input_bar_recherche_by_items" onkeyup="chercherByItems()" placeholder="Vous pouvez filtrer par rapport au champ objectifs ....">
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12 col-12">
+                <div class="form-group  position-relative">
+                    <select class="form-select custom-select lg b-0">
+                        <option value="1" selected disabled>Choisir le service</option>
+                        <option value="2">Information Technology</option>
+                        <option value="3">Cloud Computing</option>
+                        <option value="4">Engineering Services</option>
+                        <option value="5">Healthcare/Pharma</option>
+                        <option value="6">Telecom/ Internet</option>
+                        <option value="7">Finance/Insurance</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <table class="table table-bordered" id = "table_a_filtrer_by_items">
-            <thead>
+            <thead class="table-active">
                 <tr>
                 <th>#</th>
-                <th>Objectifs</th>
                 {% for key , value in items %}
                     <th>{{value}}</th>
                 {% endfor %}
@@ -48,80 +66,51 @@
                                 <td ><span id = "totalVuFaireSemioG" class="text-info fs-7">0  </span> Vu faire</td>
                                 <td ><span id = "totalFaitSemioG" class="text-info fs-7">0  </span> Fait</td>
                                 <td ><span id = "totalAcquisSemioG" class="text-info fs-7">0  </span> Acquis</td>
+                                {# <td ><span id = "lieuSemioG" class="text-info fs-7"></span></td> #}
                                 <td ><span id = "totalRemarqueSemioG" class="text-info fs-7"></span></td>
-                                <td ><span id = "totalDifficulteSemioG" class="text-info fs-7"></span></td>
+                                {# <td ><span id = "totalDifficulteSemioG" class="text-info fs-7"></span></td> #}
                             </tr>
                         {% else %}
                             <tr>
                                 <td> {{ i }}</td>
-                                <td>{{ value }}</td>
+                                <td class="w-25">{{ value }}</td>
                             
                                 <td>
-                                        <div class="d-flex">
-                                            <div class="form-check">
-                                                <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="appris{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalApprisSemioG')">
-                                            </div>
-                                            <div class="input-group input-group-sm">
-                                                    <select class="form-select" aria-label="Sélectionnez une option">
-                                                        <option value="0" selected>Lieu</option>
-                                                        {% for key_service, value_service  in services %}
-                                                            <option value="{{key_service}}">{{value_service}}</option>
-                                                        {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                </td>
-                                <td>
-                                    <div class ="d-flex">
-                                        <div class="form-check">
-                                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="vuFaire{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalVuFaireSemioG')">
-                                        </div>
-                                        <div class="input-group input-group-sm">
-                                            <select class="form-select" aria-label="Sélectionnez une option">
-                                                <option value="0">Lieu</option>
-                                                    {% for key_service, value_service  in services %}
-                                                        <option value="{{key_service}}">{{value_service}}</option>
-                                                    {% endfor %}
-                                            </select>
-                                        </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="appris{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalApprisSemioG')">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class ="d-flex">
-                                        <div class="form-check">
-                                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="fait{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalFaitSemioG')">
-                                        </div>
-                                        <div class="input-group input-group-sm">
-                                            <select class="form-select" aria-label="Sélectionnez une option">
-                                                <option value="0">Lieu</option>
-                                                {% for key_service, value_service  in services %}
-                                                    <option value="{{key_service}}">{{value_service}}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="vuFaire{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalVuFaireSemioG')">
+                                    </div>                            
+                                </td>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="fait{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalFaitSemioG')">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class ="d-flex">
-                                        <div class="form-check">
-                                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="acquis{{key}}"  onclick = "calculTotalItemsClicked(this.id,'totalAcquisSemioG')">
-                                        </div>
-                                        <div class="input-group input-group-sm">
-                                            <select class="form-select" aria-label="Sélectionnez une option">
-                                                <option value="0">Lieu</option>
-                                                {% for key_service, value_service  in services %}
-                                                    <option value="{{key_service}}">{{value_service}}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="acquis{{key}}"  onclick = "calculTotalItemsClicked(this.id,'totalAcquisSemioG')">
                                     </div>
                                 </td>
-                                <td>
+                                {# <td style ="width:15%;">
+                                    <div class="input-group input-group-sm">
+                                        <select class="form-select" aria-label="Sélectionnez une option">
+                                            <option value="0">Lieu</option>
+                                            {% for key_service, value_service  in services %}
+                                                <option value="{{key_service}}">{{value_service}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </td> #}
+                                <td style ="width:15%;">
                                     <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Rq{{key}}"><i class="bi bi-pencil-square"></i></span>
                                 </td>
-                                <td>
+                                {# <td>
                                     <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Diff{{key}}"><i class="bi bi-pencil-square"></i></span>
-                                </td>
+                                </td> #}
                             </tr>
                         {% endif %}
                     {% endif %}
@@ -129,7 +118,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <span class="badge rounded-pill bg-primary float-end" role="button">Soumettre</span>
+        <span class="badge rounded-pill bg-primary float-end" role="button" onclick = "submitCompetencesGrilleToServer()">Soumettre</span>
         
     </div>
 </div>
@@ -156,7 +145,7 @@
         </div>
     {% endif %}
 {% endfor %}
-{% for key , compentence in sous_competences %}
+{# {% for key , compentence in sous_competences %}
     {% if key !='airesGanlio' and key != 'total' %}
     
         <div class="modal" id="Diff{{key}}">
@@ -178,6 +167,5 @@
             </div>
         </div>
     {% endif %}
-{% endfor %}
-    <script src = "js/semioDermatologique.js"></script>
+{% endfor %} #}
 {% endblock %}

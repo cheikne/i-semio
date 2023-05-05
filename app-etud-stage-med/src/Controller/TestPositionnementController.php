@@ -16,7 +16,8 @@ class TestPositionnementController extends AbstractController
 
         return $this->render('pages/test_positionnement.html.twig', [
             'questionnaires_test' => $content[$id_test],
-            'id_test' => $id_test
+            'id_test' => $id_test,
+            'status_' => 'etudiant'
         ]);
     }
 }

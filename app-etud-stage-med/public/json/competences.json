@@ -212,12 +212,12 @@
         "semio_appareil_urinaire":" Semiologie de l\"Appareil Unaire"
     },
     "items":{
+        "objectifs":"Objectifs",
         "appris":"Appris",
         "vu_faire":"Vu faire",
         "fait":"Fait",
         "acquis":"Acquis",
-        "remarques":"Remarques",
-        "difficultes":"Difficultés"
+        "remarques":"Remarques/Difficultés"
     },
     "services":{
         "1":"Cardiologie",

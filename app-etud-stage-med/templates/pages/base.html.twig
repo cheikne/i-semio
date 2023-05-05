@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Bienvenu sur E-Semio!{% endblock %}</title>
         <link rel="stylesheet" href="https://cdn.uca.fr/v2/css/uca.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -11,26 +11,32 @@
     </head>
 
     <body onlaod = "detectDevice()">
-        
-        <div class="container-fluid mb-5">
-            <div class="row">
-                {% block menu %}
-                    {% include "/header/menu.html.twig"%}
-                {% endblock %}
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    {% block site_body %}{% endblock %}
-                </main>
+        <div class="preloader"></div>
+        {% if status_ == 'enseignant' %}
+            <div class ="container mb-5">
+        {% else %}
+            <div class="container-fluid mb-5">
+        {% endif %}
+                <div class="row">
+                    {% if status_ == 'enseignant' %}
+                        {% include "header/headerEnseignant.html.twig" %}
+                        <main class="container">
+                    {% else %}
+                        {% include "/header/menu.html.twig"%}
+                        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    {% endif %}
+                        {% block site_body %}{% endblock %}
+                    </main>
+                </div>
             </div>
-        </div>
-
+        <a id="back-to-top" href="#" class="badge rounded-pill bg-info back-to-top" role="button"><span class="bi bi-chevron-up"></span></a>
         {% block footer%}
             
         {% endblock %}
     
-    {% block block_js_local %}{% endblock %}
     <script src="https://cdn.uca.fr/v2/js/uca.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src = "../js/main.js" id_competence="{{id_competence is defined ? id_competence : 'home'}}"></script>
-    {# <script src="assets/js/bootstrap.bundle.min.js"></script> #}
+    {% block block_js_local %}{% endblock %}
     </body>
 </html>

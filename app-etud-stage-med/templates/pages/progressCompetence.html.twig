@@ -1,18 +1,11 @@
 {% extends "/pages/base.html.twig" %}
-
 {% block block_css_local %}<link href="../css/progress.css" rel="stylesheet">{% endblock %}
-{% block site_body %}
-  <div class="link-page-retour">
-      <p>Accueil ></p>
-  </div>
-  <div class="container text-center header-body">
-    <h1>E - Carnet Presentation {{app.user.getUid()}}</h1>
-    <p>
-      Chers étudiants,Un carnet papier a été créé dans les années 1990 par le Professeur Jean Marcheix et le Professeur Olivier Aumaître pour les étudiants en stage dans le service de Médecine Interne. Ce carnet avait pour objectif l'apprentissage de la sémiologie. Avec l’aide du Docteur Stievenart et du Professeur André, ce carnet a été numérisé. Des items ont été ajoutés dans les différents appareils.
-      Certains étudiants ont bénéficié l’année dernière en DFGSM3 d’un carnet de sémiologie en version papier lors de leur passage dans le service de Médecine Interne du CHU Gabriel Montpied avec des résultats positifs et de bons retours.
-    </p> 
 
-    <div style="margin-top:50px;z-index:-1">
+{% block site_body %}
+    <div class="link-page-retour">
+        <p><a href="/home" >Accueil  ></a> avancement</p>
+    </div>
+    <div class = " container header-body" style="margin-top:50px;z-index:-1">
         <h4 class ="text-center mb-3"> Votre niveau d'avancement </h4>
         <div class ="row">
             <div class ="col mb-5">
@@ -65,9 +58,5 @@
 
         </div>
     </di>
-    <div class="mt-5">
-      <h4>Je passe mon test de positionnement maintenant <a href="/test_positionnements/initiale">cliquer ici</a></h4>
-    </div>
-  </div>
-  {% block block_js_local %}<script src ="../js/progress.js"></script>{% endblock %}
- {% endblock %}
+    {% block block_js_local %}<script src ="../js/progress.js"></script>{% endblock %}
+{% endblock %}

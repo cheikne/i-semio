@@ -15,6 +15,7 @@ class HomePageController extends AbstractController
         $content = json_decode($json,true);
         return $this->render('pages/home_app.html.twig', [
             'listMenu' => $content["list_menu"],
+            'status_' => 'etudiant'
         ]);
     }
 }

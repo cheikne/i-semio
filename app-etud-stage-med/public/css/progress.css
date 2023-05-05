@@ -1,0 +1,484 @@
+.button-demo label {
+  font-size: 18px;
+  font-weight: normal;
+  font-family: auto;
+  color: black;
+}
+
+.demo-buttons-group {
+  margin-top: 20px;
+}
+
+/*#20 FlipCover Buttons*/
+smart-button.smart-button-element {
+  text-transform: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  border: 1px solid #ccc;
+  --smart-button-opacity-focus: initial;
+  --smart-button-opacity-hover: initial;
+  --smart-button-opacity-active: initial;
+}
+
+smart-button.smart-button-element button {
+  padding: 0;
+  background: transparent;
+  display: inline-block;
+  white-space: initial;
+  outline: none;
+}
+
+@font-face {
+  font-family: icon;
+}
+
+.appris-section,
+.appris-section * {
+  box-sizing: border-box;
+}
+
+.appris-section,
+.appris-section div {
+  transition-duration: .6s;
+}
+
+.appris-section button,
+.appris-section:hover button {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2EC8FA;
+  font-size: 16px;
+  font-family: "Times New Roman";
+}
+
+.appris-section {
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  min-height: 2.5em;
+  background: #A9ADB6;
+  border-radius: .3em;
+  perspective: 300;
+  /*box-shadow: 0 -1px 2px #fff, inset 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0.25em 1em rgba(0, 0, 0, 0.1);*/
+  width: 80px;
+  height: 30px;
+}
+
+.appris-button {
+  text-align: center;
+  transition-timing-function: ease;
+  opacity: 0;
+}
+
+.appris-button a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2EC8FA;
+}
+
+.appris-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: left bottom;
+  transform-style: preserve-3d;
+  font: 1.25em / 2 "icon";
+  color: white;
+  text-align: center;
+  pointer-events: none;
+
+}
+
+.appris-inner,
+.appris-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: .25em;
+  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  background-image: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  background-image: -ms-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.appris-inner:after,
+.appris-outer:after {
+  content: "Appris";
+}
+
+.appris-outer {
+  background-color: #2EC8FA;
+  transform: translateZ(0.25em);
+}
+
+.appris-inner {
+  background-color: #60d5fb;
+}
+
+.appris-section:hover {
+  background: #EBEFF2;
+}
+
+.appris-section:hover .appris-button {
+  opacity: 1;
+}
+
+.appris-section:hover .appris-cover {
+  transform: rotateY(-120deg);
+}
+
+.appris-section:hover .appris-inner {
+  background-color: #2EC8FA;
+}
+
+.appris-section:hover .appris-outer {
+  background-color: #0590bd;
+}
+
+.appris-section:hover .appris-cover,
+.appris-section:hover .appris-inner,
+.appris-section:hover .appris-outer {
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.1, 1.1);
+}
+
+.vu_faire-section,
+.vu_faire-section * {
+  box-sizing: border-box;
+}
+
+.vu_faire-section,
+.vu_faire-section div {
+  transition-duration: .6s;
+}
+
+.vu_faire-section button,
+.vu_faire-section:hover button {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2672ae;
+  font-size: 16px;
+  font-family: "Times New Roman";
+}
+
+.vu_faire-section {
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  min-height: 2.5em;
+  background: #A9ADB6;
+  border-radius: .3em;
+  perspective: 300;
+  /*box-shadow: 0 -1px 2px #fff, inset 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0.25em 1em rgba(0, 0, 0, 0.1);*/
+  width: 80px;
+  height: 30px;
+}
+
+.vu_faire-button {
+  text-align: center;
+  transition-timing-function: ease;
+  opacity: 0;
+}
+
+.vu_faire-button a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2672ae;
+}
+
+.vu_faire-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: left bottom;
+  transform-style: preserve-3d;
+  font: 1.25em / 2 "icon";
+  color: white;
+  text-align: center;
+  pointer-events: none;
+  /* z-index: 100; */
+}
+
+.vu_faire-inner,
+.vu_faire-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: .25em;
+  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.vu_faire-inner:after,
+.vu_faire-outer:after {
+  content: "Vu faire";
+}
+
+.vu_faire-outer {
+  background-color: #2672ae;
+  transform: translateZ(0.25em);
+}
+
+.vu_faire-inner {
+  background-color: #348dd3;
+}
+
+.vu_faire-section:hover {
+  background: #EBEFF2;
+}
+
+.vu_faire-section:hover .vu_faire-button {
+  opacity: 1;
+}
+
+.vu_faire-section:hover .vu_faire-cover {
+  transform: rotateY(-120deg);
+}
+
+.vu_faire-section:hover .vu_faire-inner {
+  background-color: #2672ae;
+}
+
+.vu_faire-section:hover .vu_faire-outer {
+  background-color: #143b5a;
+}
+
+.vu_faire-section:hover .vu_faire-cover,
+.vu_faire-section:hover .vu_faire-inner,
+.vu_faire-section:hover .vu_faire-outer {
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.1, 1.1);
+}
+
+.fait-section,
+.fait-section * {
+  box-sizing: border-box;
+}
+
+.fait-section,
+.fait-section div {
+  transition-duration: .6s;
+}
+
+.fait-section button,
+.fait-section:hover button {
+  text-decoration: none;
+  font-weight: bold;
+  color: #f80;
+  font-size: 16px;
+  font-family: "Times New Roman";
+}
+
+.fait-section {
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  min-height: 2.5em;
+  background: #A9ADB6;
+  border-radius: .3em;
+  perspective: 300;
+  /*box-shadow: 0 -1px 2px #fff, inset 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0.25em 1em rgba(0, 0, 0, 0.1);*/
+  width: 80px;
+  height: 30px;
+}
+
+.fait-button {
+  text-align: center;
+  transition-timing-function: ease;
+  opacity: 0;
+}
+
+.fait-button a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #f80;
+}
+
+.fait-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: left bottom;
+  transform-style: preserve-3d;
+  font: 1.25em / 2 "icon";
+  color: white;
+  text-align: center;
+  pointer-events: none;
+  /* z-index: 100; */
+}
+
+.fait-inner,
+.fait-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: .25em;
+  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.fait-inner:after,
+.fait-outer:after {
+  content: "Fait";
+}
+
+.fait-outer {
+  background-color: #f80;
+  transform: translateZ(0.25em);
+}
+
+.fait-inner {
+  background-color: #ffa033;
+}
+
+.fait-section:hover {
+  background: #EBEFF2;
+}
+
+.fait-section:hover .fait-button {
+  opacity: 1;
+}
+
+.fait-section:hover .fait-cover {
+  transform: rotateY(-120deg);
+}
+
+.fait-section:hover .fait-inner {
+  background-color: #f80;
+}
+
+.fait-section:hover .fait-outer {
+  background-color: #995200;
+}
+
+.fait-section:hover .fait-cover,
+.fait-section:hover .fait-inner,
+.fait-section:hover .fait-outer {
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.1, 1.1);
+}
+
+
+.acquis-section,
+.acquis-section * {
+  box-sizing: border-box;
+}
+
+.acquis-section,
+.acquis-section div {
+  transition-duration: .6s;
+}
+
+.acquis-section button,
+.acquis-section:hover button {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2672ae;
+  font-size: 16px;
+  font-family: "Times New Roman";
+}
+
+.acquis-section {
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  min-height: 2.5em;
+  background: #A9ADB6;
+  border-radius: .3em;
+  perspective: 300;
+  /*box-shadow: 0 -1px 2px #fff, inset 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 0.25em 1em rgba(0, 0, 0, 0.1);*/
+  width: 80px;
+  height: 30px;
+}
+
+.acquis-button {
+  text-align: center;
+  transition-timing-function: ease;
+  opacity: 0;
+}
+
+.acquis-button a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2672ae;
+}
+
+.acquis-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: left bottom;
+  transform-style: preserve-3d;
+  font: 1.25em / 2 "icon";
+  color: white;
+  text-align: center;
+  pointer-events: none;
+  /* z-index: 100; */
+}
+
+.acquis-inner,
+.acquis-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: .25em;
+  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.acquis-inner:after,
+.acquis-outer:after {
+  content: "Acquis";
+}
+
+.acquis-outer {
+  background-color: #2672ae;
+  transform: translateZ(0.25em);
+}
+
+.acquis-inner {
+  background-color: #348dd3;
+}
+
+.acquis-section:hover {
+  background: #EBEFF2;
+}
+
+.acquis-section:hover .acquis-button {
+  opacity: 1;
+}
+
+.acquis-section:hover .acquis-cover {
+  transform: rotateY(-120deg);
+}
+
+.acquis-section:hover .acquis-inner {
+  background-color: #2672ae;
+}
+
+.acquis-section:hover .acquis-outer {
+  background-color: #143b5a;
+}
+
+.acquis-section:hover .acquis-cover,
+.acquis-section:hover .acquis-inner,
+.acquis-section:hover .acquis-outer {
+  transition-timing-function: cubic-bezier(0.2, 0.7, 0.1, 1.1);
+}
+
+
+
+
+
+

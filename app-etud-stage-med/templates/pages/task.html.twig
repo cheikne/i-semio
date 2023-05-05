@@ -1,0 +1,311 @@
+{% extends '/pages/base.html.twig' %}
+
+{% block title %}{{libelleCompetence}}{% endblock %}
+
+{% block site_body %}
+    <div class="link-page-retour">
+        <p><a href="/home" >Accueil  ></a>{{libelleCompetence}}</p>
+    </div>
+<div class="container header-body">
+    <div class="container p-1  text-center mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>{{libelleCompetence}}</h3>
+                <p  class="lead">Révisez les concepts de base : Avant l'interrogation, assurez-vous de bien comprendre les concepts de base de la sémiologie respiratoire. Les termes tels que la respiration, la dyspnée, la toux, les sibilances, les râles, etc., sont des notions clés que vous devriez connaître et être en mesure d'expliquer.</p> 
+            </div>
+        </div>
+    </div>
+    <div id ="device_mobile" style ="display:none;">
+        {% include "competences/grilleMobile.html.twig" with [
+            {'sous_competences' : sous_competences,
+             'services':services
+            }]%}
+    </div>
+    <div class="table-responsive" id ="device_desktop" style ="display:none;">
+        <input type="text" id="input_bar_recherche_by_items" onkeyup="chercherByItems()" placeholder="Vous pouvez filtrer par rapport au champ objectifs ....">
+        <table class="table table-bordered" id = "table_a_filtrer_by_items">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Objectifs</th>
+                {% for key , value in items %}
+                    <th>{{value}}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% set i = 1 %}
+                {% for key , value  in sous_competences %}
+                    {% if key == 'airesGanlio' %}
+                        <tr>
+                            <th colspan="8" class="text-center table-secondary">{{ value }}</th>
+                        </tr>
+                    {% else %}
+                        {% if key == 'total' %}
+                            <tr>
+                                <th colspan="2" class="text-center table-secondary">{{ value }} </th>
+                                <td ><span id = "totalApprisSemioG" class="text-info fs-7">0  </span> Appris</td>
+                                <td ><span id = "totalVuFaireSemioG" class="text-info fs-7">0  </span> Vu faire</td>
+                                <td ><span id = "totalFaitSemioG" class="text-info fs-7">0  </span> Fait</td>
+                                <td ><span id = "totalAcquisSemioG" class="text-info fs-7">0  </span> Acquis</td>
+                                <td ><span id = "totalRemarqueSemioG" class="text-info fs-7"></span></td>
+                                <td ><span id = "totalDifficulteSemioG" class="text-info fs-7"></span></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td> {{ i }}</td>
+                                <td>{{ value }}</td>
+                            
+                                <td>
+                                        <div class="d-flex">
+                                            <div class="form-check">
+                                                <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="appris{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalApprisSemioG')">
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                    <select class="form-select" aria-label="Sélectionnez une option">
+                                                        <option value="0" selected>Lieu</option>
+                                                        {% for key_service, value_service  in services %}
+                                                            <option value="{{key_service}}">{{value_service}}</option>
+                                                        {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                </td>
+                                <td>
+                                    <div class ="d-flex">
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="vuFaire{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalVuFaireSemioG')">
+                                        </div>
+                                        <div class="input-group input-group-sm">
+                                            <select class="form-select" aria-label="Sélectionnez une option">
+                                                <option value="0">Lieu</option>
+                                                    {% for key_service, value_service  in services %}
+                                                        <option value="{{key_service}}">{{value_service}}</option>
+                                                    {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class ="d-flex">
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="fait{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalFaitSemioG')">
+                                        </div>
+                                        <div class="input-group input-group-sm">
+                                            <select class="form-select" aria-label="Sélectionnez une option">
+                                                <option value="0">Lieu</option>
+                                                {% for key_service, value_service  in services %}
+                                                    <option value="{{key_service}}">{{value_service}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class ="d-flex">
+                                        <div class="form-check">
+                                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="acquis{{key}}"  onclick = "calculTotalItemsClicked(this.id,'totalAcquisSemioG')">
+                                        </div>
+                                        <div class="input-group input-group-sm">
+                                            <select class="form-select" aria-label="Sélectionnez une option">
+                                                <option value="0">Lieu</option>
+                                                {% for key_service, value_service  in services %}
+                                                    <option value="{{key_service}}">{{value_service}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Rq{{key}}"><i class="bi bi-pencil-square"></i></span>
+                                </td>
+                                <td>
+                                    <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Diff{{key}}"><i class="bi bi-pencil-square"></i></span>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                {% set i = i+1 %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <span class="badge rounded-pill bg-primary float-end" role="button" onclik = "submitDataToServer()">Soumettre</span>
+        
+    </div>
+</div>
+{% for key , compentence in sous_competences %}
+    {% if key !='airesGanlio' and key != 'total' %}
+    
+        <div class="modal" id="Rq{{key}}">
+            <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Faites vos rémarques</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control " rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod lectus at posuere commodo. Aliquam eget sem ut diam scelerisque dignissim.</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Valider</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+{% for key , compentence in sous_competences %}
+    {% if key !='airesGanlio' and key != 'total' %}
+    
+        <div class="modal" id="Diff{{key}}">
+            <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Expliquez les difficultés rencontrées</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control " rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod lectus at posuere commodo. Aliquam eget sem ut diam scelerisque dignissim.</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Valider</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+{% endblock %}
+
+
+
+{# Grille mobile  #}
+
+
+{% set num_ligne = 1 %}
+{% for key , value in sous_competences %}
+    <span>{{key == 'total'?'':num_ligne~'.'}}   {{value}}</span>
+
+    {% set num_ligne = num_ligne + 1 %}
+    <div class ="card mb-5">
+        
+        <div class="card-body">
+            {% if key == 'total' %}
+                <div class="row">
+                    <div class = "col-3">
+                        <label class="form-check-label" for="check1">Appris</label>
+                        <p id = "totalApprisSemioG" class="text-info fs-7">0</p>
+                    </div>
+                    <div class = "col-3">
+                        <label class="form-check-label" for="check1">Vu_faire</label>
+                        <p  id = "totalVuFaireSemioG" class="text-info fs-7">0</p>
+                    </div>
+                    <div class = "col-2">
+                        <label class="form-check-label" for="check1">Fait</label>
+                        <p id = "totalFaitSemioG" class="text-info fs-7">0</p>
+                    </div>
+                    <div class = "col-3">
+                        <label class="form-check-label" for="check1">Acquis</label>
+                        <p id = "totalAcquisSemioG" class="text-info fs-7">0</p>
+                    </div>
+                </div>
+            {% else %}
+                
+                <div class="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Appris</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="appris{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalApprisSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm">
+                            
+                                <select class="form-select" aria-label="Sélectionnez une option">
+                                    <option value="0" selected>Lieu</option>
+                                    {% for key_service, value_service  in services %}
+                                        <option value="{{key_service}}">{{value_service}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class ="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Vu faire</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="vuFaire{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalVuFaireSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm"> 
+                            <select class="form-select" aria-label="Sélectionnez une option">
+                                <option value="0">Lieu</option>
+                                    {% for key_service, value_service  in services %}
+                                        <option value="{{key_service}}">{{value_service}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class ="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Fait</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="fait{{key}}" onclick = "calculTotalItemsClicked(this.id,'totalFaitSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm">
+                            
+                            <select class="form-select" aria-label="Sélectionnez une option">
+                                <option value="0">Lieu</option>
+                                {% for key_service, value_service  in services %}
+                                    <option value="{{key_service}}">{{value_service}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class ="row">
+                    <div class = "col">
+                        <div class="form-check">
+                            <label class="form-check-label" for="check1">Acquis</label>
+                            <input class="form-check-input " type="checkbox" name="flexRadio{{key}}" id="acquis{{key}}"  onclick = "calculTotalItemsClicked(this.id,'totalAcquisSemioG')">
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <div class="input-group input-group-sm">
+                            
+                            <select class="form-select" aria-label="Sélectionnez une option">
+                                <option value="0">Lieu</option>
+                                {% for key_service, value_service  in services %}
+                                    <option value="{{key_service}}">{{value_service}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col ms-2">
+                        <h6>Remarques</h6>
+                        <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Rq{{key}}"><i class="bi bi-pencil-square"></i></span>
+                    </div>
+                    <div class = "col">
+                        <h6>difficultés</h6>
+                        <span class="badge rounded-pill bg-primary" role="button"data-bs-toggle="modal" data-bs-target="#Diff{{key}}"><i class="bi bi-pencil-square"></i></span>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+     
+{% endfor %}
+</div>

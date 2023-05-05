@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-0" id = "nav_bar">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-0" href="/home"><span class="me-5" id="ufr_medecine_text"> E - SEMIO</span>
+        <img src="{{asset('https://cdn.uca.fr/images/logos/logo_uca_mini_light.png')}}" alt="Avatar Logo" style="width:80px;" class="rounded-pill" id ="logo_uca"> 
+    </a>
+    <a class="d-md-none float-end nav-link text-truncate text-light" href="#">Déconnexion</a>
+  <div class="navbar-nav  d-none d-md-block">
+    <div class="nav-item text-nowrap d-flex">
+      <button type="button" class="btn btn-primary btn-icon me-3" title="{{app.user.username}}" data-bs-toggle="tooltip" data-bs-placement="bottom"><span class="mdi mdi-account mdi-24px px-3"></span></button>
+    </div>
+  </div>
+</nav>

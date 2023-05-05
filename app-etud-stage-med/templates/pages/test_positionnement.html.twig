@@ -6,29 +6,35 @@
     </div>
     <div class="container header-body">
         <h1>Comment evaluez vous actuellement :</h1>
-            <div class="w-75">
+            <div>
                 {% set i = 1 %}
                 {% for key , value in questionnaires_test%}
-                        <p class= "mt-3">
-                            {{ i }}. {{ value }}
-                            <i class="fa fa-exclamation-circle" style="color:red" data-bs-toggle="tooltip" title="Ce champ est necessaire !"></i>
-                            <span class="badge rounded-pill bg-info float-end"><span id="rangePourcentage{{key}}">0</span>/ 100</span>
-                        </p>
-                        <div class="progress">
+                        <div class ="row mt-5">
+                            <div class ="col">
+                               <p>
+                                    {{ i }}. {{ value }}
+                                    <i class="fa fa-exclamation-circle" style="color:red" data-bs-toggle="tooltip" title="Ce champ est necessaire !"></i>
+                                </p>
+                            </div>
+                            <div class ="col">
+                                <span class="badge rounded-pill bg-info"><span id="rangePourcentage{{key}}">0</span>/ 100</span>
+                            </div>
+                        </div>
+                        <div class="progress" style ="width:58%;">
                             <input type="range" id="{{ key }}" role="progressbar" class="form-range" min="0" max="100" value="0" style="width: 100%; height:100%" onchange="calculerValueProgressBarForEvaluationInit('{{key}}','rangePourcentage{{key}}')">
                         </div>
                         {% set i = i + 1 %}
                 {% endfor %}  
+                <div class="mt-5  mb-5" style ="width:58%;">
+                    {% if id_test == 'initiale' %}
+                        <a href="/test_positionnements/finale"  class="mt-2 float-end">Evaluation finale<i class="fa fa-arrow-circle-right"></i></a>
+
+                    {% else %}
+
+                        <a href="/test_positionnements/initiale" ><i class="fa fa-arrow-circle-left"></i>Retourner</a>
+                        <span class="badge rounded-pill bg-primary float-end" role="button">Soumettre</span>
+                    {% endif %}
+                </div>
             </div>
-        <div class="mt-5  mb-5 w-75">
-            {% if id_test == 'initiale' %}
-                <a href="/test_positionnements/finale"  class="float-end mt-4">Evaluation finale <i class="fa fa-arrow-circle-right"></i></a>
-
-            {% else %}
-
-                <a href="/test_positionnements/initiale" ><i class="fa fa-arrow-circle-left"></i> Retourner</a>
-                <span class="badge rounded-pill bg-primary float-end" role="button">Soumettre</span>
-            {% endif %}
-        </div>
     </div>
 {% endblock %}
